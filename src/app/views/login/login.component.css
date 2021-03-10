@@ -1,0 +1,43 @@
+.login {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .container {
+    display: flex;
+    width: 600px;
+    height: 400px;
+    justify-content: center;
+    align-items: center; 
+  }
+  
+  .form {
+    display: flex;
+    align-self: center;
+    position: absolute;
+  }
+  
+  .title {
+    margin-bottom: 20px;
+  }
+  
+  .message {
+    display: flex;
+    align-self: flex-end;
+  }
+  .form-group {
+    margin-bottom: 1rem;
+  }
+  
+  span {
+    display: flex;
+    justify-content: center;
+    font-weight: 400;
+    font-size: 0.8rem; 
+  }
+  
+.separador {
+  display: flex;
+  padding: 0 20px 0 20px;
+}

@@ -1,0 +1,42 @@
+<nav class="header">
+
+    <div class="btNav">
+        <!--<button  type="button" mat-button style="outline: none;" >-->
+        <a routerLink="/dashboard" style="text-decoration: none; color: white;" class="btNavDash">
+            <i class="material-icons" style="color: white;" matTooltip="Dashboard">
+                dashboard
+            </i>
+        </a>
+        <a class="nomeInicio" style="text-decoration: none; color: white;">
+            <i>Nome da empresa</i>
+        </a>
+        <!--</button>-->
+    </div>
+
+    <div class="title">
+        <H1 style="font-size: 800; font-family: monospace;">
+            PCM ANGULAR
+        </H1>
+    </div>
+
+    <div class="login">
+        <a>
+            <i>Bem vindo,</i> <b style="font-weight: 400;"> {{nome}} </b>
+        </a>
+        <a routerLink="/login" (click)="logout()">
+            <i class="material-icons" style="color: white" matTooltip="Fechar Sessão">
+                clear
+            </i>            
+                  
+        </a>
+    </div>
+
+</nav>
+
+<!--<button  type="button" mat-button style="outline: none;" (click)='atualizar()'>
+    <i class="material-icons" style="color: white;">
+        menu
+    </i>
+</button>-->
+
+<router-outlet></router-outlet>

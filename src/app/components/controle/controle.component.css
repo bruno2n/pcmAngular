@@ -1,0 +1,202 @@
+.mat-card {
+    display: flex;
+    padding: 0px;
+    justify-content: center;
+    align-items: center;
+    height: 30px;   
+  }
+  
+  .cabecalho {
+    display: flex;
+    margin: 0px 14px 5px 14px;
+    justify-content: space-between;
+    font-size: 0.8rem;
+  }
+  
+  .equipamento {    
+    width: 510px;    
+  }
+  
+  .ultprev {    
+    width: 310px;    
+  }
+  
+  .proxprev {
+    width: 510px;
+  }
+  
+  .myContainer {
+    margin: 0px;
+    padding: 0px;    
+    display: grid;
+    grid-template-rows: 56px 480px 34px ;
+    grid-template-columns: 1fr;
+    grid-template-areas: 
+    "aaa"
+    "bbb"    
+    "ccc"
+    ;
+  }
+  
+  .row-header {
+    grid-area: aaa;     
+    display: flex;    
+    justify-content: center;
+    align-items: center;    
+  }
+  
+  .row-header h1 {
+    margin: 8px 0 8px 0;
+    font-weight: 500;
+  }
+  
+    /*Definido cor das linhas pares*/
+    .table tr:nth-child(even) {background: #FFF}
+         
+    /*Definindo cor das Linhas impáres*/
+    .table tr:nth-child(odd) {background: #eee} 
+  
+  
+  .row-input {   
+    margin-right: 10px;
+  }
+  
+  .row-table {
+    font-size: 12px;
+    grid-area: bbb;    
+    line-height: normal;
+    margin: 0px;
+    text-align: center;
+    font-weight: 500;
+  }
+  
+  .table th, .table td {
+    border: none;   
+  }
+  
+  .table {
+    width: 98%;
+    margin-left: 14px;
+  }
+  
+  .row-footer {
+    grid-area: ccc; 
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-left: 12px;    
+  }    
+  
+  .filtro {
+    display: flex;
+    align-items: center;
+  }
+  
+  
+  .row {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 20px;
+    margin-right: 10px;
+    margin-left: 10px;
+    justify-content: space-between;
+  }
+  
+  .verde {
+    display: flex;
+    color: rgb(61, 252, 61);    
+    height: 20px;
+    justify-content: center;
+    align-items: center;
+    margin: 8px;    
+  }
+  
+  .amarelo {
+    display: flex;    
+    color:  rgb(248, 248, 79);    
+    height: 20px;
+    justify-content: center;
+    align-items: center;
+    margin: 8px;
+  }
+  
+  .vermelho {
+    display: flex;    
+    color:rgb(252, 58, 58);
+    height: 20px;
+    justify-content: center;
+    align-items: center;
+    margin: 8px;
+  }
+  
+  .todas {
+    display: flex;    
+    color: rgb(95, 95, 95);
+    height: 20px;
+    justify-content: center;
+    align-items: center;
+    margin: 8px;
+  }
+  
+  .mat-form-field-appearance-legacy .mat-form-field-label {
+    color: #1932be;
+  }
+  
+  .mat-input-element:disabled, .mat-form-field-type-mat-native-select.mat-form-field-disabled .mat-form-field-infix::after {
+    color: black;
+  }
+  
+  .seek {
+    display: flex;
+  }
+  
+  .search {
+    margin: 20px;
+    margin-left: 40px;
+    width: 240px;    
+    z-index: 2;    
+    background: #fff;
+    box-shadow: 0 16px 38px -12px rgba(0,0,0,.56), 0 4px 25px 0 rgba(0,0,0,.12), 0 8px 10px -5px rgba(0,0,0,.2);       
+  }
+  
+  .bt {
+    outline: none;
+  }
+  
+  
+  .mat-form-field {
+    display: flex;
+    position: relative;
+    text-align: left;
+  }
+  
+  
+  .container {
+    margin: 20px;
+    margin-left: 40px;
+    width: 240px;
+    height: 440px;
+    z-index: 2;    
+    background: #fff;
+    box-shadow: 0 16px 38px -12px rgba(0,0,0,.56), 0 4px 25px 0 rgba(0,0,0,.12), 0 8px 10px -5px rgba(0,0,0,.2);       
+  }
+  
+  .example-tooltip-green {
+    background:  rgb(61, 252, 61);
+    color: black;
+  }
+  
+  .example-tooltip-yellow {
+    background: rgb(248, 248, 79);
+    color: black;
+  }
+  
+  .example-tooltip-red {
+    background: rgb(252, 58, 58);
+    color: black;
+  }
+
+  .paginacao {
+    display: flex;
+    align-items: center;
+  }

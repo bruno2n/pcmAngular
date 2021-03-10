@@ -1,0 +1,56 @@
+.container {
+    margin: 20px;
+    margin-left: 40px;
+    width: 100px;
+    height: 60px;
+    z-index: 2;    
+    background: #fff;
+    box-shadow: 0 16px 38px -12px rgba(0,0,0,.56), 0 4px 25px 0 rgba(0,0,0,.12), 0 8px 10px -5px rgba(0,0,0,.2);       
+}
+
+.header {
+    width: 100%;
+    background-color: red;
+    color: white;
+    display: flex;
+    align-items: center;    
+    justify-content: space-between;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+}
+
+.title {
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.title h1 {
+    margin: 10px 20px 10px 0px;
+    /*margin-top: 8px;
+    margin-right: 20px;*/
+}
+
+.login {
+    display: flex;
+    align-items: center;
+    margin-right: 20px;
+    padding: 10px;
+}
+
+.login > a > i {
+    vertical-align: bottom;
+    padding-right: 3px;
+}
+
+.btNav {
+    display: flex;
+    align-items: center;
+}
+
+.btNavDash {
+    padding: 10px;
+}

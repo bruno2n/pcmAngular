@@ -1,0 +1,67 @@
+<div class="pagina">
+
+    <div class="header">
+
+        <div class="row-header">
+            <h1 style="font-family: Verdana, Geneva, Tahoma, sans-serif;">
+                Controle de Preventivas
+            </h1>
+        </div>
+
+        <mat-card class="container">
+            <form class="form">
+                <mat-form-field class="example-full-width">
+                    <mat-label>Frota</mat-label>
+                    <input matInput placeholder="Digite o número de frota" [(ngModel)]="inputFrota" name="inputFrota" (keyup)="buscar()">
+
+                </mat-form-field>
+                <mat-form-field class="example-full-width">
+                    <mat-label>Sobrenome</mat-label>
+                    <input matInput placeholder="Digite o sobrenome" [(ngModel)]="inputSobrenome" name="inputSobrenome">
+
+                </mat-form-field>
+                <mat-form-field class="example-full-width">
+                    <mat-label>Zona</mat-label>
+                    <mat-select disableRipple [(ngModel)]="inputZona" name="inputZona">
+                        <mat-option *ngFor="let item of _array" value="{{ item }}">{{item}}</mat-option>                      
+                      </mat-select>
+                </mat-form-field>
+                
+            </form>
+
+            <div class="icones">
+                <a class="btn my-4 my-sm-0" style="color: rgb(35, 126, 211);" (click)="carregarDados()"><i class="fas fa-repeat" matTooltip="Atualizar dados"></i></a>
+                <a class="btInfo btn my-4 my-sm-0" style="color: rgb(35, 126, 211);" (click)="limparDados()"><i class="fas fa-times" matTooltip="Limpar dados"></i></a>
+            </div>
+
+            <div class="botoes">
+                <div *ngIf="inputFrota && inputSobrenome && inputZona" class="bt">
+                    <div *ngIf="!equipamento.frota" class="bt">
+                        <button class="bt" mat-raised-button (click)="cadastrar()" color="primary">Cadastrar Equipamento</button>
+                    </div>
+                    <div *ngIf="equipamento.frota" class="bt">                            
+                        <div *ngIf="inputZona != equipamento.ano" class="bt">
+                            <button class="bt" mat-raised-button  color="accent">Atualizar Usuário</button>               
+                        </div>
+                        <div *ngIf="inputZona == equipamento.ano" class="bt">
+                            <button class="bt" mat-raised-button  color="warn" (click)="excluir(equipamento.frota)">Excluir Usuário</button>               
+                        </div>                            
+                    </div>
+                    
+                    <button type="button" class="bt btn btn-success ml-2">Adicionar</button>
+                </div>
+                <div>
+                    <span>
+                        Total de Equipamentos:
+                    </span>
+                    <span>{{_length}}</span>
+                </div>
+            </div>
+        </mat-card>   
+
+    </div>
+    <table class="table">
+        <app-equipamentos></app-equipamentos>
+    </table>
+
+</div>

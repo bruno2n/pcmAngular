@@ -1,0 +1,17 @@
+.example-full-width {
+    width: 300px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.form-container {
+    width: 100%;   
+}
+
+.body {
+    width: 100%;
+}
+
+.row-group {
+    display: flex;        
+}

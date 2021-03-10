@@ -1,0 +1,54 @@
+<div class="pagina">  
+
+    <table class="table">
+        <caption>Dados dos Equipamentos</caption>
+        <thead>
+          <tr class="table-header">            
+                      
+              <th>FROTA</th>                            
+              <th>ANO</th>                
+              <th>FABRICANTE</th>
+              <th>MODELO</th>
+              <th>HORÍMETRO</th>
+              <th>STATUS</th>
+              <th>SÉRIE</th>
+              <th>LOTAÇÃO</th>
+              <th>ÚLTIMA PREVENTIVA</th>
+                      
+          </tr>
+      </thead>
+        <tbody>
+            <!--<tr *ngFor="let item of dados" class="table-dados" (click)="editar(item.frota!, item.ano!, item.fabricante!, item.frota!)">     -->
+            <tr *ngFor="let item of dados" class="table-dados" (click)="editar(item)">
+
+                <td><a mat-list-item>{{item.frota}}</a></td>
+                <td><a mat-list-item>{{item.ano}}</a></td>
+                <td><a mat-list-item>{{item.fabricante}}</a></td>
+                <td><a mat-list-item>{{item.modelo}}</a></td>
+                <td><a mat-list-item>{{item.horimetroAtual}}</a></td>
+                <td><a mat-list-item>{{item.status}}</a></td>
+                <td><a mat-list-item>{{item.serie}}</a></td>
+                <td><a mat-list-item>{{item.lotacao}}</a></td>
+                <td><a mat-list-item>{{item.ultprev}}</a></td>
+
+            </tr>
+        </tbody>
+    </table>    
+
+</div>
+
+<!--<div class="container">
+
+<div class="button">
+    <button type="button" class="btn btn-success ml-2" data-toggle="modal" data-target="#modalExemple">Adicionar</button>
+    <br><br>
+  </div>
+
+  style
+
+  .container {
+    margin-top: 80px;
+    margin-left: 20px;
+}
+
+ </div>-->

@@ -1,0 +1,81 @@
+<div class="pagina">
+
+    <div class="header">
+
+        <div class="row-header">
+            <h1 style="font-family: Verdana, Geneva, Tahoma, sans-serif;">
+                Controle de Preventivas
+            </h1>            
+        </div>
+
+        <mat-card class="container">        
+            <form class="form">
+                <mat-form-field class="example-full-width">
+                    <mat-label>Frota</mat-label>
+                    <input matInput placeholder="Digite o nome" [(ngModel)]="inputFrota" name="inputFrota">
+                    <button mat-button *ngIf="inputFrota" matSuffix mat-icon-button aria-label="Clear" (click)="inputFrota=''">
+                        <mat-icon>close</mat-icon>
+                    </button>
+                </mat-form-field>       
+                <mat-form-field class="example-full-width">
+                    <mat-label>Sobrenome</mat-label>
+                    <input matInput placeholder="Digite o sobrenome" [(ngModel)]="inputSobrenome" name="inputSobrenome">
+                    <button mat-button *ngIf="inputSobrenome" matSuffix mat-icon-button aria-label="Clear" (click)="inputSobrenome=''">
+                        <mat-icon>close</mat-icon>
+                    </button>
+                </mat-form-field>       
+                <mat-form-field class="example-full-width">
+                    <mat-label>Zona</mat-label>
+                    <input matInput placeholder="Digite zona" [(ngModel)]="inputZona" name="inputZona">
+                    <button mat-button *ngIf="inputZona" matSuffix mat-icon-button aria-label="Clear" (click)="inputZona=''">
+                        <mat-icon>close</mat-icon>
+                    </button>
+                </mat-form-field>
+            </form>
+                
+                <div class="icones">
+                    <a class="btn my-4 my-sm-0" style="color: rgb(35, 126, 211);" (click)="buscar()"><i class="fas fa-search"  matTooltip="Pesquisar"></i></a>  
+                    <a class="btn my-4 my-sm-0" style="color: rgb(35, 126, 211);" (click)="limparDados()"><i class="fas fa-times"  matTooltip="Limpar dados"></i></a>                      
+                </div>
+
+                <div class="botoes">                    
+                    <div *ngIf="inputFrota != auxFrota || inputSobrenome != auxSobrenome || inputZona != auxZona" class="bt">
+                        <button *ngIf="inputFrota && inputSobrenome && inputZona" class="bt" mat-raised-button (click)="cadastrar()" color="primary">Cadastrar Usuário</button>
+                    </div>                                      
+                </div>                
+            </mat-card>
+            
+            <div class="teste" style="color: white;">
+                <div>FROTA</div>
+                <div>MODELO</div>
+                <div>HORÍMETRO</div>
+                <div>HORAS RESTANTES</div>
+            </div>
+
+    </div>    
+
+    <table class="table">
+        <caption>Dados dos Equipamentos</caption>
+        <!--<thead>
+            <tr class="table-header">            
+                        
+                <th><b>NOME</b></th>                            
+                <th><b>SOBRENOME</b></th>                
+                <th><b>ZONA</b></th>
+                        
+            </tr>
+        </thead>-->
+        <tbody>
+            <tr *ngFor="let item of dados" class="table-dados" (click)="editar(item.frota!, item.ano!, item.fabricante!, item.frota!)">     
+
+                <td><a mat-list-item >{{item.frota}}</a></td>        
+                <td><a mat-list-item >{{item.fabricante}} / {{item.modelo}}</a></td>
+                <td><a mat-list-item >{{item.horimetroAtual}}</a></td>
+                <td><a mat-list-item >{{item.timer}}</a></td>
+                
+            </tr>
+        </tbody>
+
+    </table>
+
+</div>

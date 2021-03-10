@@ -1,0 +1,46 @@
+<div class="login">
+    <mat-card class="container">    
+        <form (ngSubmit) = "login()" class="form">
+            
+            <mat-card-title class="title" >
+              <a mat-list-item>
+                LOGIN
+              </a>          
+              <div class="form-group input">
+                <input type="email" name="email" class="form-control" [(ngModel)]="email" placeholder="Email" required>    
+              </div> 
+              <div class="form-group input">
+                <input type="password" name="senha" class="form-control" [(ngModel)]="senha" placeholder="Senha" required>    
+              </div>
+              <!--
+              <span>
+                <a mat-list-item>
+                Cadastrar
+              </a>
+              <div class="separador">
+                |
+              </div>          
+              <a mat-list-item>
+                Recuperar senha
+              </a>
+              </span>
+              -->
+              <div class="button">
+                <button type="submit" class="btn btn-primary">
+                  Entrar
+                </button>
+              </div>                            
+            </mat-card-title>        
+        </form>
+        <div class="form-group message" >
+          <p *ngIf="errorMessage.length > 0" class="text-danger">
+            {{ errorMessage }}
+          </p>
+          <p *ngIf="error.message.length > 0" class="text-danger">
+            <!--{{ error.message }}-->
+            Usuário ou senha inválidos
+          </p>
+        </div>
+    </mat-card>
+    
+    </div>

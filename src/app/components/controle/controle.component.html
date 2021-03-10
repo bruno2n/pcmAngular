@@ -1,0 +1,234 @@
+<div class="myContainer mat-4">    
+    
+    <div class="row-header">
+        <h1 *ngIf="teste == false" style="font-family: Verdana, Geneva, Tahoma, sans-serif;">
+            Controle de Preventivas
+        </h1>        
+        <h1 *ngIf="teste == true">
+            Informações do Equipamento
+        </h1>        
+    </div>
+  
+    <div *ngIf="teste == false" class="row-table">
+  
+        <div class="cabecalho">
+            <mat-card class="equipamento">
+                <b>EQUIPAMENTO</b>
+                    </mat-card>
+            <mat-card class="ultprev">
+                <b>ÚLTIMA PREVENTIVA</b>
+            </mat-card>
+            <mat-card class="proxprev">
+                <b>PRÓXIMA PREVENTIVA</b>
+            </mat-card>
+        </div>
+  
+        <table class="table">
+        <!-- <tr class="table-header">            
+                
+                <td colspan="3"><b>EQUIPAMENTO</b></td>
+                            
+                <td colspan="1" style="background-color: cyan;"><b>ÚLTIMA PREVENTIVA</b></td>
+                
+                <td colspan="4"><b>PRÓXIMA PREVENTIVA</b></td>
+                
+                <td style="background-color: cyan;"><b></b></td>
+                
+            </tr>-->
+            <!--<tr style="background-color: rgb(172, 169, 169); font-size: 15px;">-->
+            <tr style="font-size: 15px;">
+                <td><b>Status</b></td>           
+                <td><b>Frota</b></td>                       
+                <td><b>Modelo</b></td>
+                <td><b>Horímetro</b></td>
+                <td><b>Data / Horímetro</b></td>
+                <td><b>Horas Restantes</b></td>
+                <td><b>350H</b></td>
+                <td><b>1000H</b></td>
+                <td><b>2000H</b></td>            
+            </tr>
+            <tr *ngFor="let item of dados">
+                <td *ngIf="item.timer!>=50" class="verde"><a mat-list-item><i class="material-icons">
+                    check_circle
+                </i></a></td>
+                <td *ngIf="0<item.timer! && item.timer!<50" class="amarelo"><a mat-list-item><i class="material-icons">
+                    error
+                </i></a></td>
+                    <td *ngIf="item.timer!<=0" class="vermelho"><a mat-list-item><i class="material-icons">
+                        cancel
+                    </i></a></td>
+        
+                <td><a mat-list-item (click)="imprimir(item.frota!, 'frota')"><b>{{item.frota}}</b></a></td>
+                <td><a mat-list-item (click)="imprimir(item.modelo!, 'modelo')">{{item.fabricante}} / {{item.modelo}}</a></td>
+                <td><a mat-list-item (click)="imprimir(item.horimetro!, 'horimetro')"><b>{{item.horimetroAtual}}</b></a></td>            
+                <td><a mat-list-item (click)="imprimir(item.ultprev!, 'ultprev')">{{item.ultprev}} / {{item.horimetro}}H</a></td>
+                <td><a mat-list-item (click)="imprimir(item.horimetro!, 'horimetro')"><b>{{item.timer}}</b></a></td>
+                <td><a mat-list-item (click)="imprimir(item.ultprev!, 'ultprev')">{{item.prev350}}</a></td>            
+                <td><a mat-list-item (click)="imprimir(item.ultprev!, 'ultprev')">{{item.prev1000}}</a></td>            
+                <td><a mat-list-item (click)="imprimir(item.ultprev!, 'ultprev')">{{item.prev2000}}</a></td>
+            </tr>
+        </table>
+  
+    </div>
+    
+        <div *ngIf="teste == false" class="row-footer">
+            <div class="filtro">
+                Filtrar Dados:            
+                <div class="verde">
+                    <a mat-list-item>
+                        <i class="material-icons"  matTooltip="Em ordem" (click)="buscar(3)">
+                        check_circle
+                        </i>
+                    </a>
+                </div>
+                <div class="amarelo">
+                    <a mat-list-item>
+                        <i class="material-icons"  matTooltip="A vencer " (click)="buscar(2)">
+                        error
+                        </i>
+                    </a>
+                </div>
+                <div class="vermelho">
+                    <a mat-list-item>
+                        <i class="material-icons"  matTooltip="Vencidas" (click)="buscar(1)">
+                            cancel
+                        </i>
+                    </a>
+                </div>
+                <div class="todas">
+                    <a mat-list-item>
+                        <i class="material-icons"  matTooltip="Todas" (click)="buscar(0)">
+                            assignment
+                        </i>
+                    </a>
+                </div>
+            </div>
+            <div>
+                <span>
+                    Total de Equipamentos:
+                </span>
+                <span>{{_length}}</span>
+            </div>
+  
+            <div class="row-input">
+            <form class="form-inline my-2 my-lg-0">                
+                <select [(ngModel)]="zona" name="zona">
+                    <option *ngFor="let item of _array" value="{{ item }}">
+                        {{ item }}                        
+                    </option>                    
+                </select>
+                <a class="btn my-2 my-sm-0" (click)="carregar()">
+                    <i class="fas fa-search"></i>
+                </a>
+            </form>
+        </div>
+    
+            <form class="form-inline my-2 my-lg-0 paginacao" >           
+                <a class="btn  my-2 my-sm-0" (click)="retornar()">
+                    <i class="fas fa-angle-double-left"></i>
+                </a>
+                <div>
+                    Página {{_pageAtual}} de {{_pageTotal}}
+                </div>
+                <a class="btn  my-2 my-sm-0" (click)="avancar()">
+                    <i class="fas fa-angle-double-right"></i>
+                </a>
+            </form>
+        </div>    
+  
+    
+    <div class="seek" *ngIf="teste == true">
+        <mat-card class="container">
+        
+            <form >
+                <mat-card-title class="title frota">
+                    {{ equipamento.frota }}
+                </mat-card-title>
+        
+                <mat-form-field>
+                    <input matInput placeholder="Fabricante" [(ngModel)]="equipamento.fabricante" name="fabricante" [disabled]="editar == true">
+                </mat-form-field>
+                <mat-form-field>
+                    <input matInput placeholder="Modelo" [(ngModel)]="equipamento.modelo" name="modelo" [disabled]="editar == true">
+                </mat-form-field>
+                <mat-form-field>
+                    <input matInput placeholder="Ano de Fabricação" [(ngModel)]="equipamento.ano" name="ano" [disabled]="editar == true">
+                </mat-form-field>
+                <mat-form-field>
+                    <input matInput placeholder="Número de Série" [(ngModel)]="equipamento.serie" name="serie" [disabled]="editar == true">
+                </mat-form-field>
+                <mat-form-field>
+                    <input matInput placeholder="Lotação" [(ngModel)]="equipamento.lotacao" name="lotacao" [disabled]="editar == true">
+                </mat-form-field>
+            </form>
+            </mat-card>
+        <mat-card class="container">    
+            <form >           
+                <mat-form-field>
+                    <input matInput placeholder="Preventida de 350H" [(ngModel)]="equipamento.prev350" name="prev350" [disabled]="editar == true">
+                </mat-form-field>
+                <mat-form-field>
+                    <input matInput placeholder="Preventida de 1000H" [(ngModel)]="equipamento.prev1000" name="prev1000" [disabled]="editar == true">
+                </mat-form-field>
+                <mat-form-field>
+                    <input matInput placeholder="Preventida de 2000H" [(ngModel)]="equipamento.prev2000" name="prev2000" [disabled]="editar == true">
+                </mat-form-field>
+                <mat-form-field>
+                    <input matInput placeholder="Horas Restantes" [(ngModel)]="equipamento.timer" name="timer" [disabled]="editar == true">
+                </mat-form-field>
+                
+            </form>
+            </mat-card>
+                <mat-card class="container">
+                    <form>
+                <mat-form-field>
+                    <input matInput placeholder="Status" [(ngModel)]="equipamento.status" name="status" [disabled]="editar == true">
+                </mat-form-field>
+                <mat-form-field>
+                    <input matInput placeholder="Última Preventiva" [(ngModel)]="equipamento.ultprev" name="ultprev" [disabled]="editar == true">
+                </mat-form-field>
+                <mat-form-field>
+                    <input matInput placeholder="Início do Ciclo de Preventivas" [(ngModel)]="equipamento.horimetro" name="horimetro" [disabled]="editar == true">
+                </mat-form-field>
+                <mat-form-field>
+                    <input matInput placeholder="Horímetro Atualizado" [(ngModel)]="equipamento.horimetroAtual" name="horimetroAtual" [disabled]="editar == true">
+                </mat-form-field>
+            </form>
+            <button class="bt" mat-raised-button (click)="salvar()" color="primary">Salvar</button>
+            <button class="bt" mat-raised-button (click)="editar = true" color="basic">Editar</button>
+            <button class="bt" mat-raised-button (click)="teste = false" color="warn">Fechar</button>
+        </mat-card>       
+    </div>
+    
+    
+  </div>
+  
+  <!--
+    <div class="row-button">
+            <button class="btn btn-success ml-2" (click)="imprimir('', 'frota')" data-toggle="modal">Adcionar</button>
+            <br><br>
+        </div>
+        
+        <div class="row-input">
+            <form class="form-inline my-2 my-lg-0">                
+                <select [(ngModel)]="zona" name="zona">
+                    <option *ngFor="let item of _array" value="{{ item }}">
+                        {{ item }}                        
+                    </option>
+                  </select>
+                <a class="btn btn-outline-info my-2 my-sm-0" (click)="carregar()">
+                    <i class="fas fa-search"></i>
+                </a>
+            </form>
+        </div>
+  
+        <div class="row-input">
+            <form class="form-inline my-2 my-lg-0">
+                <input type="text" class="form-control mr-sm-2" placeholder="campo" name="campo" [(ngModel)]="campo">
+                <input type="search" class="form-control mr-sm-2" placeholder="pesquisar" name="frotaId" [(ngModel)]="frotaId">
+                <a class="btn btn-outline-info my-2 my-sm-0" (click)="buscar(campo, frotaId)">
+                    <i class="fas fa-search"></i>
+                </a>
+            </form>
+        </div>
+  -->

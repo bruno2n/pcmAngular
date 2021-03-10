@@ -1,0 +1,83 @@
+<div class="pagina">
+
+    <div class="header">
+
+        <div class="row-header">
+            <h1 style="font-family: Verdana, Geneva, Tahoma, sans-serif;">
+                Gerenciar Usuários
+            </h1>            
+        </div>
+
+        <mat-card class="container">        
+            <form class="form">
+                <mat-form-field class="example-full-width">
+                    <mat-label>Nome</mat-label>
+                    <input matInput placeholder="Digite o nome" [(ngModel)]="inputNome" name="inputNome" (keyup)="buscar()">
+                   
+                </mat-form-field>       
+                <mat-form-field class="example-full-width">
+                    <mat-label>Sobrenome</mat-label>
+                    <input matInput placeholder="Digite o sobrenome" [(ngModel)]="inputSobrenome" name="inputSobrenome" (keyup)="buscar()">
+                   
+                </mat-form-field>       
+                <mat-form-field class="example-full-width">
+                    <mat-label>Zona</mat-label>
+                    <input matInput placeholder="Digite zona" [(ngModel)]="inputZona" name="inputZona" (keyup)="buscar()">
+                    <!--<button mat-button *ngIf="inputZona" matSuffix mat-icon-button aria-label="Clear" (click)="inputZona=''">
+                        <mat-icon>close</mat-icon>
+                    </button>-->
+                </mat-form-field>
+            </form>
+                
+                <div class="icones">
+                    <a class="btn my-4 my-sm-0" style="color: rgb(35, 126, 211);" (click)="buscar()"><i class="fas fa-repeat"  matTooltip="Atualizar dados"></i></a>  
+                    <a class="btn my-4 my-sm-0" style="color: rgb(35, 126, 211);" (click)="limparDados()"><i class="fas fa-times"  matTooltip="Limpar dados"></i></a>  
+                    <!--<a class="btn my-4 my-sm-0" style="color: blue;" (click)="cadastrar()"><i class="fas fa-save"  matTooltip="Cadastrar usuário"></i></a>  
+                    <a class="btn my-4 my-sm-0" style="color: blue;" (click)="excluir(usuario.key!)"><i class="fas fa-trash"  matTooltip="Excluir usuário"></i></a>-->
+                </div>
+
+                <div class="botoes">
+                    <div *ngIf="inputNome && inputSobrenome && inputZona" class="bt">                                            
+                        <div *ngIf="!usuario.key" class="bt">
+                            <button class="bt" mat-raised-button color="primary" (click)="cadastrar()">Cadastrar Usuário</button>
+                        </div>
+                        <div *ngIf="usuario.key" class="bt">                            
+                            <div *ngIf="inputZona != usuario.zona" class="bt">
+                                <button class="bt" mat-raised-button  color="accent">Atualizar Usuário</button>               
+                            </div>
+                            <div *ngIf="inputZona == usuario.zona" class="bt">
+                                <button class="bt" mat-raised-button  color="warn" (click)="excluir(usuario.key)">Excluir Usuário</button>               
+                            </div>                            
+                        </div>     
+                    </div> 
+                    <button class="bt" mat-raised-button  color="warn" (click)="salvar2()">Indexar</button>                                               
+                </div>
+                
+            </mat-card>
+            
+    </div>    
+
+    <table class="table">
+       <caption>Dados dos Usuários</caption>
+        <thead>
+            <tr class="table-header">            
+                        
+                <th>NOME</th>                            
+                <th>SOBRENOME</th>                
+                <th>ZONA</th>
+                        
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of dados" class="table-dados" (click)="editar(item)">     
+
+                <td><a mat-list-item >{{item.nome}}</a></td>        
+                <td><a mat-list-item >{{item.sobrenome}}</a></td>
+                <td><a mat-list-item >{{item.zona}}</a></td>
+                
+            </tr>
+        </tbody>
+    
+    </table>
+
+</div>
